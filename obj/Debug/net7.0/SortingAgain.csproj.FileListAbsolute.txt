@@ -1,0 +1,15 @@
+P:\gennady_documents\Coding tools\VS-projects(C)\SortingAgain\bin\Debug\net7.0\SortingAgain.exe
+P:\gennady_documents\Coding tools\VS-projects(C)\SortingAgain\bin\Debug\net7.0\SortingAgain.deps.json
+P:\gennady_documents\Coding tools\VS-projects(C)\SortingAgain\bin\Debug\net7.0\SortingAgain.runtimeconfig.json
+P:\gennady_documents\Coding tools\VS-projects(C)\SortingAgain\bin\Debug\net7.0\SortingAgain.dll
+P:\gennady_documents\Coding tools\VS-projects(C)\SortingAgain\bin\Debug\net7.0\SortingAgain.pdb
+P:\gennady_documents\Coding tools\VS-projects(C)\SortingAgain\obj\Debug\net7.0\SortingAgain.csproj.AssemblyReference.cache
+P:\gennady_documents\Coding tools\VS-projects(C)\SortingAgain\obj\Debug\net7.0\SortingAgain.GeneratedMSBuildEditorConfig.editorconfig
+P:\gennady_documents\Coding tools\VS-projects(C)\SortingAgain\obj\Debug\net7.0\SortingAgain.AssemblyInfoInputs.cache
+P:\gennady_documents\Coding tools\VS-projects(C)\SortingAgain\obj\Debug\net7.0\SortingAgain.AssemblyInfo.cs
+P:\gennady_documents\Coding tools\VS-projects(C)\SortingAgain\obj\Debug\net7.0\SortingAgain.csproj.CoreCompileInputs.cache
+P:\gennady_documents\Coding tools\VS-projects(C)\SortingAgain\obj\Debug\net7.0\SortingAgain.dll
+P:\gennady_documents\Coding tools\VS-projects(C)\SortingAgain\obj\Debug\net7.0\refint\SortingAgain.dll
+P:\gennady_documents\Coding tools\VS-projects(C)\SortingAgain\obj\Debug\net7.0\SortingAgain.pdb
+P:\gennady_documents\Coding tools\VS-projects(C)\SortingAgain\obj\Debug\net7.0\SortingAgain.genruntimeconfig.cache
+P:\gennady_documents\Coding tools\VS-projects(C)\SortingAgain\obj\Debug\net7.0\ref\SortingAgain.dll
