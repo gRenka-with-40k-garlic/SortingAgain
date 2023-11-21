@@ -331,9 +331,9 @@ namespace SortingAgain
 
         }
 
-        
+        /*
         //слиянием - каюсь, это я нашла на просторах интернета 
-        //надо переделать под списки и тоже переписать класс
+        //надо переделать под списки 
         public class MergeSort
         {
             public static int[] Sort(int[] arr)
@@ -377,6 +377,7 @@ namespace SortingAgain
                 return merged;
             }
         }
+        */
 
         public class Node
         {
