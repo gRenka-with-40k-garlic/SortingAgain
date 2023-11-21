@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics.Metrics;
 using System;
 using System.Reflection;
+using System.Xml.Linq;
 
 namespace SortingAgain
 {
@@ -57,7 +58,23 @@ namespace SortingAgain
             //вывод для пузырьковой сортировки 
             Console.WriteLine("Пузырькова сортировка");
             Console.WriteLine(string.Join(" ", BubbleSort(arr)));
-            
+
+
+            //add new code for my project 
+            DoublyLinkedList dll = new DoublyLinkedList();
+            dll.AddNode(5);
+            dll.AddNode(2);
+            dll.AddNode(8);
+            dll.AddNode(1);
+            dll.AddNode(9);
+
+            Console.WriteLine("До сортировки:");
+            dll.PrintList(dll.head);
+
+            dll.head = dll.MergeSort(dll.head);
+
+            Console.WriteLine("Сортировка слиянием:");
+            dll.PrintList(dll.head);
         }
 
 
@@ -247,6 +264,7 @@ namespace SortingAgain
             Console.WriteLine($"Значения счетчика присваиваний:{assignmentCounter}");
         }
 
+        
         //пирамидальная - каюсь, это я нашла на просторах интернета 
         //мда надо всетаки переписать класс, ленивые счетчики не работают 
         public class HeapSort
@@ -313,7 +331,7 @@ namespace SortingAgain
 
         }
 
-
+        
         //слиянием - каюсь, это я нашла на просторах интернета 
         //надо переделать под списки и тоже переписать класс
         public class MergeSort
@@ -360,7 +378,220 @@ namespace SortingAgain
             }
         }
 
+        public class Node
+        {
+            public int data;
+            public Node prev;
+            public Node next;
 
+            public Node(int d)
+            {
+                data = d;
+                prev = null;
+                next = null;
+            }
+        }
+
+        private static int Partition(int[] arr, int start, int end)
+        {
+            int marker = start;
+            int pivotValue = arr[end];
+
+            for (int i = start; i < end; i++)
+            {
+                if (arr[i] < pivotValue)
+                {
+                    int temp = arr[marker];
+                    arr[marker] = arr[i];
+                    arr[i] = temp;
+                    marker += 1;
+                }
+            }
+
+            arr[end] = arr[marker];
+            arr[marker] = pivotValue;
+
+            return marker;
+        }
+
+        private static void Swap(ref int a, ref int b)
+        {
+            int temp = a;
+            a = b;
+            b = temp;
+        }
+
+        public class DoublyLinkedList
+        {
+            public Node head;
+
+            public DoublyLinkedList()
+            {
+                head = null;
+            }
+
+            public Node MergeSort(Node node)
+            {
+                if (node == null || node.next == null)
+                {
+                    return node;
+                }
+
+                Node middle = GetMiddle(node);
+                Node nextOfMiddle = middle.next;
+                middle.next = null;
+
+                Node left = MergeSort(node);
+                Node right = MergeSort(nextOfMiddle);
+
+                Node sortedList = Merge(left, right);
+
+                return sortedList;
+            }
+
+            private Node Merge(Node left, Node right)
+            {
+                if (left == null)
+                {
+                    return right;
+                }
+
+                if (right == null)
+                {
+                    return left;
+                }
+
+                Node result = null;
+
+                if (left.data <= right.data)
+                {
+                    result = left;
+                    result.next = Merge(left.next, right);
+                    result.next.prev = result;
+                }
+                else
+                {
+                    result = right;
+                    result.next = Merge(left, right.next);
+                    result.next.prev = result;
+                }
+
+                return result;
+            }
+
+            private Node GetMiddle(Node node)
+            {
+                if (node == null)
+                {
+                    return node;
+                }
+
+                Node slow = node;
+                Node fast = node;
+
+                while (fast.next != null && fast.next.next != null)
+                {
+                    slow = slow.next;
+                    fast = fast.next.next;
+                }
+
+                return slow;
+            }
+
+            public void PrintList(Node node)
+            {
+                Node last = null;
+                while (node != null)
+                {
+                    Console.Write(node.data + " ");
+                    last = node;
+                    node = node.next;
+                }
+                Console.WriteLine();
+            }
+
+            public void AddNode(int data)
+            {
+                Node newNode = new Node(data);
+
+                if (head == null)
+                {
+                    head = newNode;
+                }
+                else
+                {
+                    Node current = head;
+                    while (current.next != null)
+                    {
+                        current = current.next;
+                    }
+                    current.next = newNode;
+                    newNode.prev = current;
+                }
+            }
+        }
+
+        /*
+        public class HeapSort
+        {
+            public void Sort(int[] arr)
+            {
+                int n = arr.Length;
+
+                BuildMaxHeap(arr, n);
+
+                for (int i = n - 1; i > 0; i--)
+                {
+                    Swap(arr, 0, i);
+                    Heapify(arr, i, 0);
+                }
+            }
+
+            private void BuildMaxHeap(int[] arr, int n)
+            {
+                for (int i = n / 2 - 1; i >= 0; i--)
+                    Heapify(arr, n, i);
+            }
+
+            private void Heapify(int[] arr, int n, int i)
+            {
+                int largest = i;
+                int left = 2 * i + 1;
+                int right = 2 * i + 2;
+
+                if (left < n && arr[left] > arr[largest])
+                    largest = left;
+
+                if (right < n && arr[right] > arr[largest])
+                    largest = right;
+
+                if (largest != i)
+                {
+                    Swap(arr, i, largest);
+                    Heapify(arr, n, largest);
+                }
+            }
+
+            private void Swap(int[] arr, int i, int j)
+            {
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+
+            public void PrintArray(int[] arr)
+            {
+                int n = arr.Length;
+                for (int i = 0; i < n; ++i)
+                {
+                    Console.Write(arr[i] + " ");
+                }
+                Console.WriteLine();
+            }
+
+        }
+
+        */
 
         //счетчик общий для всех - но метод для метода я писать не буду
 
