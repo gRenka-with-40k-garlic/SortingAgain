@@ -39,11 +39,11 @@ namespace SortingAgain
             Console.WriteLine("Пирамидальная сортировка");
             HeapSort.printArray(arr);
             
-
+            /*
             //вывод для сортировки слиянием
             Console.WriteLine("Сортировка слиянием");
             Console.WriteLine(string.Join(" ", MergeSort.Sort(arr)));
-            
+            */
 
             ////вывод для сортировки вставками
             Console.WriteLine("Сортировка вставками");
@@ -61,14 +61,15 @@ namespace SortingAgain
 
 
             //add new code for my project 
-            DoublyLinkedList dll = new DoublyLinkedList();
+            //вывод для сортировки слиянием (ДВУСВЯЗНЫХ СПИСКОВ)
+            DoubleLinkedList dll = new DoubleLinkedList();
             dll.AddNode(5);
             dll.AddNode(2);
             dll.AddNode(8);
             dll.AddNode(1);
             dll.AddNode(9);
 
-            Console.WriteLine("До сортировки:");
+            Console.WriteLine("До сортировки (слиянием):");
             dll.PrintList(dll.head);
 
             dll.head = dll.MergeSort(dll.head);
@@ -422,11 +423,11 @@ namespace SortingAgain
             b = temp;
         }
 
-        public class DoublyLinkedList
+        public class DoubleLinkedList
         {
             public Node head;
 
-            public DoublyLinkedList()
+            public DoubleLinkedList()
             {
                 head = null;
             }
@@ -594,17 +595,7 @@ namespace SortingAgain
 
         */
 
-        //счетчик общий для всех - но метод для метода я писать не буду
-
-        //int compareCounter = 0; // счетчик сравнений
-        //int assignmentCounter = 0; // счетчик присваиваний 
-
-        //assignmentCounter++;
-        //compareCounter++;
-
-        //Console.WriteLine($"Значения счетчика сравнений:{compareCounter}");
-        //Console.WriteLine($"Значения счетчика присваиваний:{assignmentCounter}");
-        //Console.WriteLine(" ");
+       
 
     }
 }
